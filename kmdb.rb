@@ -111,7 +111,7 @@ new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = Studio.find_by({"name" => "Warner Bros."})["id"]
 new_movie.save
 
-all_movies = Movie.all
+
 #puts all_movies.inspect
 
 # # insert data into actors table
@@ -253,27 +253,27 @@ new_role["actor_id"] = Actor.find_by({"name" => "Anne Hathaway"})["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
 
-all_roles = Role.all
+
 #puts all_roles.inspect
 
 # Prints a header for the movies output
-# puts "Movies"
-# puts "======"
-# puts ""
+puts "Movies"
+puts "======"
+puts ""
 
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
+# TODO! 
 
-# movies = []
-# for new_movie in all_movies
-#     for new_studio in all_studios
-#         title = new_movie["title"]
-#         year = new_movie["year_released"]
-#         rating = new_movie["rated"]
-#         studio = new_studio["name"]
-#         puts "#{title} #{year} #{rating} #{studio}"
-#     end
-# end
+
+all_movies = Movie.all
+
+for new_movie in all_movies
+        title = new_movie["title"]
+        year = new_movie["year_released"]
+        rating = new_movie["rated"]
+        studio= Studio.find_by({"id" => new_movie["studio_id"]})
+        puts "#{title} #{year} #{rating} #{studio["name"]}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -284,11 +284,17 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-top_cast = []
-for new_movie in all_movies
-for new_role in all_studios
-    for new_actor in all_actors
-        title = new_role["movie_id"]
-        actor = new_actor["name"]
+all_roles = Role.all
+
+for new_role in all_roles
+        title = Movie.find_by({"id" => new_role["movie_id"]})
+        actor = Actor.find_by({"id" => new_role["actor_id"]})
+        role = new_role["character_name"]
+        puts "#{title["title"]} #{actor["name"]} #{role}"
+end
+
+
+
+
 
 
