@@ -92,21 +92,21 @@ all_studios = Studio.all
 # insert data into movie table
 new_movie = Movie.new
 new_movie["title"] = "Batman Begins"
-new_movie["year_released"] = "2005"
+new_movie["year_released"] = 2005
 new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = Studio.find_by({"name" => "Warner Bros."})["id"]
 new_movie.save
 
 new_movie = Movie.new
 new_movie["title"] = "The Dark Knight"
-new_movie["year_released"] = "2008"
+new_movie["year_released"] = 2008
 new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = Studio.find_by({"name" => "Warner Bros."})["id"]
 new_movie.save
 
 new_movie = Movie.new
 new_movie["title"] = "The Dark Knight Rises"
-new_movie["year_released"] = "2012"
+new_movie["year_released"] = 2012
 new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = Studio.find_by({"name" => "Warner Bros."})["id"]
 new_movie.save
